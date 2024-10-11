@@ -22,12 +22,32 @@ namespace SZGYA13C_Versenyzo
         {
             List<Versenyzo> versenyzok = new List<Versenyzo>();
 
+
             string[] line = File.ReadAllLines(path);
 
             foreach (var l in line)
             {
+                string[] v = l.Split(';');
+
+                if (v.Length > 1)
+                {
+                    string Nev = v[0];
+                    List<int> Pontok = v[1].Split(' ')
+                                           .Select(int.Parse)
+                                           .ToList();
+
+                    Versenyzo versenyzo = new Versenyzo(Nev, Pontok);
+                    versenyzok.Add(versenyzo);
+                }
 
             }
+
+            return versenyzok;
+        }
+
+        public override string ToString()
+        {
+            return $"{Nev}, {string.Join(' ', Pontok)}";
         }
     }
 }
