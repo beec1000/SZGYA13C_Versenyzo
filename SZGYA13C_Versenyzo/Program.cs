@@ -16,19 +16,19 @@ namespace SZGYA13C_Versenyzo
             versenyzo = Versenyzo.FromFile(@"..\..\..\src\selejtezo.txt");
 
             //3.feladat
-            Console.WriteLine($"A selejtezőn {versenyzo.Count()} versenyző vett részt.");
+            Console.WriteLine($"A versenyen {versenyzo.Count()} versenyző vett részt.");
 
             //4.feladat
             Random rnd = new Random();
 
             var randomVersenyzo = rnd.Next(0, versenyzo.Count);
-            var randomPontok = versenyzo[randomVersenyzo].Pontok; 
+            
 
-            Console.WriteLine($"Random Zsűri pontozása: {string.Join(", ", randomPontok)}");
+            Console.WriteLine($"Kérem a zsűritag sorszámát: {string.Join(", ", randomVersenyzo)}");
 
             // 5.feladat
-            var atlagPont = randomPontok.Average();
-            Console.WriteLine($"A kiválasztott versenyző pontjainak átlaga: {Math.Round(atlagPont, 1)}");
+            var atlagPont = versenyzo[randomVersenyzo].Pontok.Average();
+            Console.WriteLine($"A zsűritag által adott pontszámok átlaga: {Math.Round(atlagPont, 1)}");
 
             //6.feladat
             var sumPontosVersenyzok = versenyzo.Select(v => new { Nev = v.Nev, OsszPont = v.Pontok.Sum() })
@@ -39,7 +39,7 @@ namespace SZGYA13C_Versenyzo
 
             foreach (var i in legtobbPontNev)
             {
-                Console.WriteLine($"A legtöbb pont {legtobbPont} volt {i.Nev}-nak.");
+                Console.WriteLine($"A legmagasabb pontszámot elért versenyző: {i.Nev}. Pontszáma: {legtobbPont}");
             }
 
         }
