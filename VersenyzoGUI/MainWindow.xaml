@@ -1,0 +1,38 @@
+﻿<Window x:Class="VersenyzoGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VersenyzoGUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Versenyző neve:" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Margin="80,0,0,0" />
+        <TextBox x:Name="versenyzoNev" Text="" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150"/>
+
+        <Label Content="Versenyző pontszámai:" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150" Margin="80,0,0,0" />
+        <TextBox x:Name="versenyzoPontjai" Text="" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150"/>
+        <Label x:Name="pontDB" Content="0db" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="500,0,0,0" />
+
+        <Label Content="Kieső legmagasabb pontszám:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
+        <Label x:Name="kiseoLegmagasabbPont" Content="" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <Label Content="Kieső legalacsonyabb pontszám:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
+        <Label x:Name="kiseoLegalacsonyabbPont" Content="" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <Label Content="A versenyző összesített pontszáma:" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
+        <Label x:Name="osszPont" Content="" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+        <Button x:Name="versenyzoHozzaadas" Content="Versenyző hozzáadása" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+    </Grid>
+</Window>
