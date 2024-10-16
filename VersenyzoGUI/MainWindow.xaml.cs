@@ -9,11 +9,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
+using SZGYA13C_Versenyzo;
 
 namespace VersenyzoGUI
 {
     public partial class MainWindow : Window
     {
+        List<Versenyzo> versenyzo = new List<Versenyzo>();
         public MainWindow()
         {
             InitializeComponent();
@@ -37,8 +39,39 @@ namespace VersenyzoGUI
                 }
             }
 
-            kiesoLegmagasabbPont.Content = pontArray.MaxBy().First();
+            kiesoLegmagasabbPont.Content = pontArray.Max();
+            kiesoLegalacsonyabbPont.Content = pontArray.Min();
+            int ossz = 0;
+            foreach (var p in pontArray)
+            {
+                ossz += int.Parse(p);
+            }
+            
+            if (ossz < 3)
+            {
+                osszPont.Content = 0;
+            }
+            else
+            {
+                osszPont.Content = ossz;
+            }
 
+        }
+
+        private void versenyzoHozzaadas_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var v in versenyzo)
+            {
+                if (v.Nev.Contains(versenyzoNev.Text))
+                {
+                    MessageBox.Show("Van már ilyen nevű versenyző!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    versenyzoNev.Text = string.Empty;
+                }
+                else if ()
+                {
+
+                }
+            }
         }
     }
 }

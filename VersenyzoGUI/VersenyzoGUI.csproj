@@ -8,4 +8,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SZGYA13C_Versenyzo\SZGYA13C_Versenyzo.csproj" />
+  </ItemGroup>
+
 </Project>

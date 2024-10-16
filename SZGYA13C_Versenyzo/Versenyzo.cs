@@ -7,7 +7,7 @@ using System.IO;
 
 namespace SZGYA13C_Versenyzo
 {
-    internal class Versenyzo
+    public class Versenyzo
     {
         public string Nev { get; set; }
         public List<int> Pontok { get; set; }
