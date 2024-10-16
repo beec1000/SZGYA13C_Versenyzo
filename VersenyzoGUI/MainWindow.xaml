@@ -24,10 +24,10 @@
         <Label x:Name="pontDB" Content="0db" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="500,0,0,0" />
 
         <Label Content="Kieső legmagasabb pontszám:" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
-        <Label x:Name="kiseoLegmagasabbPont" Content="" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Label x:Name="kiesoLegmagasabbPont" Content="" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
         <Label Content="Kieső legalacsonyabb pontszám:" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
-        <Label x:Name="kiseoLegalacsonyabbPont" Content="" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Label x:Name="kiesoLegalacsonyabbPont" Content="" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
 
         <Label Content="A versenyző összesített pontszáma:" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Left" Width="200" Margin="80,0,0,0" />
         <Label x:Name="osszPont" Content="" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" />
