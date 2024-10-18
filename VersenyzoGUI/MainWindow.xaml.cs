@@ -59,7 +59,6 @@ namespace VersenyzoGUI
             }
 
         }
-
         private void versenyzoHozzaadas_Click(object sender, RoutedEventArgs e)
         {
             var pontArray = GetPontArray(versenyzoPontjai.Text);
@@ -68,7 +67,7 @@ namespace VersenyzoGUI
             {
                 MessageBox.Show("Kérjük, adja meg a versenyző nevét!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            else if (versenyzo.Any(v => v.Nev.Contains(versenyzoNev.Text)))
+            else if (versenyzo.Any(v => v.Nev == versenyzoNev.Text))
             {
                 MessageBox.Show("Van már ilyen nevű versenyző!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
                 versenyzoNev.Text = string.Empty;
@@ -81,9 +80,9 @@ namespace VersenyzoGUI
             {
                 string ujVersenyzo = $"{versenyzoNev.Text};{string.Join(" ", pontArray)}";
 
-                File.AppendAllLines(@"C:\Users\c20refkab\source\repos\SZGYA13C_Versenyzo\SZGYA13C_Versenyzo\src\selejtezo.txt", new[] { ujVersenyzo });
+                File.AppendAllLines(@"..\..\..\..\SZGYA13C_Versenyzo\src\selejtezo.txt", new[] { ujVersenyzo });
 
-                MessageBox.Show("Versenyző hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Az állomány bővítése sikeres volt!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
                 versenyzoNev.Text = string.Empty;
                 versenyzoPontjai.Text = string.Empty;
             }
