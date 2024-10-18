@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
 using SZGYA13C_Versenyzo;
+using System.IO;
 
 namespace VersenyzoGUI
 {
@@ -21,13 +22,14 @@ namespace VersenyzoGUI
             InitializeComponent();
             versenyzoPontjai.TextChanged += VersenyzoPontjai_TextChanged;
 
-            
-
+        }
+        private string[] GetPontArray(string input)
+        {
+            return input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
         }
         private void VersenyzoPontjai_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var pontok = versenyzoPontjai.Text;
-            var pontArray = pontok.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+            var pontArray = GetPontArray(versenyzoPontjai.Text);
 
             pontDB.Content = $"{pontArray.Length}db";
 
@@ -60,18 +62,34 @@ namespace VersenyzoGUI
 
         private void versenyzoHozzaadas_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var v in versenyzo)
-            {
-                if (v.Nev.Contains(versenyzoNev.Text))
-                {
-                    MessageBox.Show("Van már ilyen nevű versenyző!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    versenyzoNev.Text = string.Empty;
-                }
-                else if ()
-                {
+            var pontArray = GetPontArray(versenyzoPontjai.Text);
 
-                }
+            if (string.IsNullOrWhiteSpace(versenyzoNev.Text))
+            {
+                MessageBox.Show("Kérjük, adja meg a versenyző nevét!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            else if (versenyzo.Any(v => v.Nev.Contains(versenyzoNev.Text)))
+            {
+                MessageBox.Show("Van már ilyen nevű versenyző!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+                versenyzoNev.Text = string.Empty;
+            }
+            else if (pontArray.Length != 6)
+            {
+                MessageBox.Show("A pontszámok száma nem megfelelő! Pontszámok száma: " + pontArray.Length, "Hiba", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                string ujVersenyzo = $"{versenyzoNev.Text};{string.Join(" ", pontArray)}";
+
+                File.AppendAllLines(@"C:\Users\c20refkab\source\repos\SZGYA13C_Versenyzo\SZGYA13C_Versenyzo\src\selejtezo.txt", new[] { ujVersenyzo });
+
+                MessageBox.Show("Versenyző hozzáadva!", "Siker", MessageBoxButton.OK, MessageBoxImage.Information);
+                versenyzoNev.Text = string.Empty;
+                versenyzoPontjai.Text = string.Empty;
+            }
+
+            
         }
+
     }
 }
