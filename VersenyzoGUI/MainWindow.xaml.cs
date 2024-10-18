@@ -20,6 +20,8 @@ namespace VersenyzoGUI
         public MainWindow()
         {
             InitializeComponent();
+            versenyzo = Versenyzo.FromFile(@"..\..\..\..\SZGYA13C_Versenyzo\src\selejtezo.txt");
+
             versenyzoPontjai.TextChanged += VersenyzoPontjai_TextChanged;
 
         }
